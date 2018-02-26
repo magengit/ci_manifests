@@ -5,7 +5,7 @@ metadata:
   labels:
     app: appguard-book-page
     example.com/zone: external
-    aexample.com/classification: secret
+    example.com/classification: secret
 spec:
   ports:
   - port: 30010
