@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: appguard-user-ratings
+  labels:
+    app: appguard-user-ratings
+spec:
+  ports:
+  - port: 30002
+    name: http
+  selector:
+    app: appguard-user-ratings
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: appguard-user-ratings
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: appguard-user-ratings
+        version: v1
+    spec:
+      containers:
+      - name: appguard-user-ratings
+        image: appguard-user-ratings:v0.1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 30002
+---
